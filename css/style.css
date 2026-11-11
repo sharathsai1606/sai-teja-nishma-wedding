@@ -111,7 +111,7 @@ section{position:relative;padding:56px 28px;text-align:center}
 .arch-stage{position:relative;margin:0 auto 4px}
 .arch-wreath{display:block;margin:0 auto;width:min(100%,340px)}
 .arch-wreath img{width:100%;height:auto;display:block}
-.ganesha{position:absolute;left:50%;top:60%;width:min(19vw,70px);transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 2px 4px rgba(139,100,40,.35))}
+.ganesha{position:absolute;left:50%;top:66%;width:min(27vw,98px);transform:translate(-50%,-50%);pointer-events:none;filter:drop-shadow(0 2px 4px rgba(139,100,40,.35))}
 .ganesha picture{display:block}
 .ganesha img{width:100%;height:auto;display:block}
 .js .arch{background-color:transparent}
