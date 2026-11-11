@@ -22,7 +22,10 @@
     if(muted||!ac)return;
     try{
       var t=ac.currentTime+.05;
-      [[523.25,0],[659.25,.22],[783.99,.44],[1046.5,.7],[1318.5,1.05]].forEach(function(n){bell(n[0],t+n[1],1)});
+      // a slow two-strike temple-bell toll, not a fast ascending run -
+      // the quick 5-note arpeggio this used to be read as a phone notification
+      bell(293.66,t,1);
+      bell(392.00,t+1.1,.8);
     }catch(e){}
   }
 
