@@ -5,6 +5,22 @@
   document.documentElement.classList.add('js');
   var main=$('#main'),cover=$('#cover'),opened=false;
 
+  /* ---------- add-to-calendar: native app on iOS instead of Google's web page ---------- */
+  (function(){
+    var isIOS=/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+    if(!isIOS)return;
+    var calBtn=$('#calBtn');if(!calBtn)return;
+    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Sai Teja & Nishma Wedding//EN','CALSCALE:GREGORIAN',
+      'BEGIN:VEVENT','UID:saiteja-nishma-wedding-2026@sai-teja-nishma-wedding.vercel.app',
+      'DTSTAMP:20261118T000000Z','DTSTART:20261118T060000Z','DTEND:20261118T093000Z',
+      'SUMMARY:Sai Teja & Nishma Wedding',
+      'LOCATION:Nimmala Convention\\, Kandlakoya\\, Medchal\\, Hyderabad',
+      'DESCRIPTION:Muhurtam 11:30 A.M. · Makara Lagnam',
+      'END:VEVENT','END:VCALENDAR'].join('\r\n');
+    calBtn.setAttribute('href','data:text/calendar;charset=utf-8,'+encodeURIComponent(ics));
+    calBtn.removeAttribute('target');
+  })();
+
   /* ---------- cover ambience ---------- */
   for(var s=0;s<28;s++){var st0=document.createElement('i');st0.className='star';st0.style.left=(Math.random()*100)+'%';st0.style.top=(Math.random()*100)+'%';st0.style.animationDelay=(Math.random()*3)+'s';st0.style.animationDuration=(2+Math.random()*3)+'s';cover.appendChild(st0)}
 
