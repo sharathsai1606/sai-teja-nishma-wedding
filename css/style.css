@@ -221,8 +221,8 @@ h2{font-weight:500;font-size:30px;margin:8px 0 0;color:var(--forest)}
 .qrcap{font-family:var(--sans);font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--forest);margin:12px 0 0;position:relative;z-index:2}
 .venue .btnrow{position:relative;z-index:2}
 
-.hosts{display:grid;gap:14px;margin-top:20px;font-size:19px;color:var(--forest)}
-.hosts p{margin:0}
+.hosts{display:grid;gap:16px;margin-top:20px;font-size:19px;color:var(--forest)}
+.hosts p{margin:0;font-family:var(--serif);font-style:italic;font-weight:600;font-size:22px;letter-spacing:.01em;color:var(--forest-deep)}
 .end{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
 
 /* scroll reveals */
