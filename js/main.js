@@ -354,10 +354,7 @@
 
   /* ---------- share functionality ---------- */
   var shareUrl=window.location.href.split('#')[0];
-  var shareMsg='With immense joy, happiness, and heartfelt warmth, we cordially invite you and your family to grace the wedding ceremony of our beloved brother\n\n✨ Chi. Sai Teja Reddy ✨\nwith\n✨ Chi. La. Sow. Nishma Reddy ✨\n\n📅 Date: 18th November 2026\n⏰ Muhurtam: 11:30 A.M.\n📍 Venue: Nimmala Convention, Medchal, Hyderabad\n🗺️ Google Maps: https://maps.app.goo.gl/zjrMrKS5AR9WCLuP6?g_st=aw\n\n🌐 View Digital Invitation:\n'+shareUrl+'\n\nYour presence and blessings will add great joy to this special occasion.\n\nWith love and regards,\nArutla Sri Manish Reddy\nOn behalf of Arutla Lakshmi – Anji Reddy & Family ❤️';
-
-  var waBtn=$('#waBtn');
-  if(waBtn){waBtn.href='https://wa.me/?text='+encodeURIComponent(shareMsg);}
+  var shareMsg='With immense joy, happiness, and heartfelt warmth, we cordially invite you and your family to grace the wedding ceremony of\n\n✨ Chi. Sai Teja Reddy ✨\nwith\n✨ Chi. La. Sow. Nishma Reddy ✨\n\n📅 Date: 18th November 2026\n⏰ Muhurtam: 11:30 A.M.\n📍 Venue: Nimmala Convention, Medchal, Hyderabad\n🗺️ Google Maps: https://maps.app.goo.gl/zjrMrKS5AR9WCLuP6?g_st=aw\n\n🌐 View Digital Invitation:\n'+shareUrl+'\n\nYour presence and blessings will add great joy to this special occasion.\n\nWith love,\nSmt. & Sri Arutla Lakshmi – Anji Reddy\nSmt. & Sri Arutla Ramya – Maruthi Reddy ❤️';
 
   var nativeShareBtn=$('#nativeShareBtn');
   if(navigator.share && nativeShareBtn){

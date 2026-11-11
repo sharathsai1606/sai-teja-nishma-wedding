@@ -60,7 +60,7 @@ button{font:inherit;cursor:pointer}
 @keyframes rays{0%{opacity:0;transform:rotate(0) scale(.3)}25%{opacity:.9}100%{opacity:0;transform:rotate(40deg) scale(1)}}
 .seal{position:absolute;z-index:4;left:50%;top:50%;width:min(74vw,310px);aspect-ratio:1;transform:translate(-50%,-50%);border:0;background:none;padding:0;transition:opacity .9s ease .5s,transform 1.2s ease .3s}
 .seal svg{width:100%;height:100%;display:block;overflow:visible;filter:drop-shadow(0 10px 18px rgba(0,0,0,.45))}
-.ring{transform-box:fill-box;transform-origin:center}
+.ring{transform-box:fill-box;transform-origin:center;animation:spin 36s linear infinite}
 .seal-lettering{font-family:var(--sans);font-weight:500;text-transform:uppercase}
 .seal-lettering-top{font-size:12px;letter-spacing:2.8px}
 .seal-lettering-bottom{font-size:9.4px;letter-spacing:1.65px}
@@ -222,8 +222,6 @@ h2{font-weight:500;font-size:30px;margin:8px 0 0;color:var(--forest)}
 
 .hosts{display:grid;gap:14px;margin-top:20px;font-size:19px;color:var(--forest)}
 .hosts p{margin:0}
-.sign{font-size:clamp(30px,9vw,44px);margin:14px 0 0}
-.foot{font-family:var(--sans);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin:6px 0 0}
 .end{padding-bottom:calc(56px + env(safe-area-inset-bottom,0px))}
 
 /* scroll reveals */
