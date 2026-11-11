@@ -5,19 +5,15 @@
   document.documentElement.classList.add('js');
   var main=$('#main'),cover=$('#cover'),opened=false;
 
-  /* ---------- add-to-calendar: native app on iOS instead of Google's web page ---------- */
+  /* ---------- add-to-calendar: native app on iOS instead of Google's web page ----------
+     a data: URI works in Safari but Chrome-on-iOS silently blocks top-level navigation to
+     data: URIs, so this links to a real .ics file instead - iOS hands that straight to the
+     Calendar app no matter which browser opened the link. */
   (function(){
     var isIOS=/iP(hone|od|ad)/.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
     if(!isIOS)return;
     var calBtn=$('#calBtn');if(!calBtn)return;
-    var ics=['BEGIN:VCALENDAR','VERSION:2.0','PRODID:-//Sai Teja & Nishma Wedding//EN','CALSCALE:GREGORIAN',
-      'BEGIN:VEVENT','UID:saiteja-nishma-wedding-2026@sai-teja-nishma-wedding.vercel.app',
-      'DTSTAMP:20261118T000000Z','DTSTART:20261118T060000Z','DTEND:20261118T093000Z',
-      'SUMMARY:Sai Teja & Nishma Wedding',
-      'LOCATION:Nimmala Convention\\, Kandlakoya\\, Medchal\\, Hyderabad',
-      'DESCRIPTION:Muhurtam 11:30 A.M. · Makara Lagnam',
-      'END:VEVENT','END:VCALENDAR'].join('\r\n');
-    calBtn.setAttribute('href','data:text/calendar;charset=utf-8,'+encodeURIComponent(ics));
+    calBtn.setAttribute('href','assets/wedding-invite.ics');
     calBtn.removeAttribute('target');
   })();
 

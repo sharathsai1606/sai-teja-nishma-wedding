@@ -1,0 +1,15 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Sai Teja & Nishma Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:saiteja-nishma-wedding-2026@sai-teja-nishma-wedding.vercel.app
+DTSTAMP:20261118T000000Z
+DTSTART:20261118T060000Z
+DTEND:20261118T093000Z
+SUMMARY:Sai Teja & Nishma Wedding
+LOCATION:Nimmala Convention\, Kandlakoya\, Medchal\, Hyderabad
+DESCRIPTION:Muhurtam 11:30 A.M. · Makara Lagnam
+END:VEVENT
+END:VCALENDAR
