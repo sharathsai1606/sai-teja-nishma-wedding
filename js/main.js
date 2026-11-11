@@ -139,11 +139,6 @@
   halo.appendChild(el('circle',{cx:180,cy:200,r:168,fill:'none',stroke:'#dcc283','stroke-width':1,'stroke-dasharray':'2 6'}));
   halo.appendChild(el('circle',{cx:180,cy:200,r:150,fill:'rgba(233,185,189,.10)',stroke:'#b98a3c','stroke-width':.8}));
   for(var q=0;q<18;q++){halo.appendChild(el('ellipse',{cx:180,cy:63,rx:9,ry:28,fill:'rgba(185,138,60,.10)',stroke:'#c9a049','stroke-width':.8,transform:'rotate('+(q*20)+' 180 200)'}))}
-  var md=$('#mandala');
-  [[12,38,'#b98a3c'],[12,64,'#b98a3c'],[24,88,'#dcc283']].forEach(function(r){
-    for(var m=0;m<r[0];m++){md.appendChild(el('ellipse',{cx:0,cy:-r[1],rx:r[1]*.12,ry:r[1]*.34,fill:'none',stroke:r[2],'stroke-width':.9,transform:'rotate('+(m*360/r[0])+')'}))}
-  });
-  md.appendChild(el('circle',{r:98,fill:'none',stroke:'#dcc283','stroke-width':.8,'stroke-dasharray':'1 3'}));
 
   /* arch outline, drawn on reveal */
   function arch(){
