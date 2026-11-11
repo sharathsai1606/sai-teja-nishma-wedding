@@ -65,8 +65,9 @@ button{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}
 .seal-lettering{font-family:var(--sans);font-weight:500;text-transform:uppercase}
 .seal-lettering-top{font-size:12px;letter-spacing:2.8px}
 .seal-lettering-bottom{font-size:9.4px;letter-spacing:1.65px}
-.seal-initial{font-family:'Times New Roman',Times,serif;font-weight:700;font-size:54px;fill:#3b2a0c}
-.seal-ampersand{font-family:'Times New Roman',Times,serif;font-size:23px;font-style:italic;font-weight:700;fill:#3b2a0c}
+.seal-plate{fill:#1f3d2b;stroke:#e9b96b;stroke-width:.8}
+.seal-initial{font-family:'Times New Roman',Times,serif;font-weight:700;font-size:15px;fill:#f1dca0}
+.seal-ampersand{font-family:'Times New Roman',Times,serif;font-size:10px;font-style:italic;font-weight:700;fill:#f1dca0}
 .body{transform-box:fill-box;transform-origin:center;animation:breathe 3s ease-in-out infinite}
 @keyframes breathe{50%{transform:scale(1.05)}}
 .ripple{position:absolute;inset:18% ;border-radius:50%;border:1.5px solid var(--gold-soft);opacity:0;animation:ripple 3.2s ease-out infinite}
