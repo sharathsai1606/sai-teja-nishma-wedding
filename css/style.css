@@ -195,6 +195,7 @@ h2{font-weight:500;font-size:30px;margin:8px 0 0;color:var(--forest)}
 .btn.ghost{background:transparent;color:var(--forest)}
 .btn.ghost:hover{background:rgba(31,61,43,.08)}
 .btnrow{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;margin-top:22px}
+.btnrow[hidden]{display:none}
 .pop{animation:pop .8s cubic-bezier(.2,.8,.2,1) both}
 
 /* countdown */

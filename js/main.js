@@ -363,8 +363,7 @@
       e.preventDefault();
       navigator.share({
         title:'Sai Teja & Nishma Wedding Invitation',
-        text:shareMsg,
-        url:shareUrl
+        text:shareMsg
       }).catch(function(){});
     });
   }
