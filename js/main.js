@@ -8,7 +8,7 @@
   /* ---------- cover ambience ---------- */
   for(var s=0;s<28;s++){var st0=document.createElement('i');st0.className='star';st0.style.left=(Math.random()*100)+'%';st0.style.top=(Math.random()*100)+'%';st0.style.animationDelay=(Math.random()*3)+'s';st0.style.animationDuration=(2+Math.random()*3)+'s';cover.appendChild(st0)}
 
-  /* ---------- sound (synthesised temple bell) ---------- */
+  /* ---------- sound (synthesised temple bell + ambient wedding music) ---------- */
   var ac=null,muted=false,snd=$('#snd');
   function bell(f,t,v){
     if(!ac)return;
@@ -25,17 +25,65 @@
       [[523.25,0],[659.25,.22],[783.99,.44],[1046.5,.7],[1318.5,1.05]].forEach(function(n){bell(n[0],t+n[1],1)});
     }catch(e){}
   }
+
+  /* gentle generative background music: a soft sustained pad plus a slow
+     wandering music-box melody, built from oscillators so no audio file
+     needs to be hosted. volume is intentionally low and sits under the
+     bell/scratch/confetti sound effects rather than competing with them. */
+  var musicGain=null,musicOn=false,padTimer=null,melTimer=null,melIdx=0,melDir=1;
+  var MUSIC_VOL=.13;
+  var padChord=[261.63,329.63,392.00];              // C4 E4 G4 - soft sustained pad
+  var melScale=[392.00,440.00,523.25,587.33,659.25,783.99]; // G4 A4 C5 D5 E5 G5 - pentatonic wander
+
+  function padNote(f,t,dur){
+    var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=f;
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.5,t+dur*.4);g.gain.linearRampToValueAtTime(0,t+dur);
+    o.connect(g);g.connect(musicGain);o.start(t);o.stop(t+dur+.1);
+  }
+  function padLoop(){
+    if(!musicOn)return;
+    var t=ac.currentTime+.05;
+    padChord.forEach(function(f){padNote(f,t,9)});
+    padTimer=setTimeout(padLoop,8000);
+  }
+  function melNote(f,t){
+    [[1,.5],[2,.16],[3,.07]].forEach(function(p){
+      var o=ac.createOscillator(),g=ac.createGain();o.type='sine';o.frequency.value=f*p[0];
+      g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(p[1],t+.02);g.gain.exponentialRampToValueAtTime(.0001,t+1.6);
+      o.connect(g);g.connect(musicGain);o.start(t);o.stop(t+1.7);
+    });
+  }
+  function melodyLoop(){
+    if(!musicOn)return;
+    var t=ac.currentTime+.05;
+    melNote(melScale[melIdx],t);
+    melIdx+=melDir;
+    if(melIdx>=melScale.length-1||melIdx<=0)melDir*=-1;
+    else if(Math.random()<.3)melDir*=-1;
+    melTimer=setTimeout(melodyLoop,1100+Math.random()*500);
+  }
+  function startMusic(){
+    if(!ac||musicOn)return;
+    musicOn=true;
+    musicGain=ac.createGain();
+    musicGain.gain.value=0;
+    musicGain.connect(ac.destination);
+    musicGain.gain.linearRampToValueAtTime(muted?0:MUSIC_VOL,ac.currentTime+3);
+    padLoop();
+    melodyLoop();
+  }
   snd.addEventListener('click',function(){
     muted=!muted;
     snd.classList.toggle('mute',muted);
     snd.setAttribute('aria-pressed',String(!muted));
-    snd.setAttribute('aria-label',muted?'Unmute wedding bell sound':'Mute wedding bell sound');
+    snd.setAttribute('aria-label',muted?'Unmute wedding music':'Mute wedding music');
+    if(musicGain)musicGain.gain.linearRampToValueAtTime(muted?0:MUSIC_VOL,ac.currentTime+.8);
     if(!muted){
       try{
         if(ac&&ac.state==='suspended'){
-          ac.resume().then(chime);
+          ac.resume().then(function(){chime();startMusic()});
         }else{
-          chime();
+          chime();startMusic();
         }
       }catch(e){}
     }
@@ -160,9 +208,9 @@
       if(AC){
         ac=new AC();
         if(ac.state==='suspended'){
-          ac.resume().then(chime);
+          ac.resume().then(function(){chime();startMusic()});
         }else{
-          chime();
+          chime();startMusic();
         }
       }
     }catch(e){}
